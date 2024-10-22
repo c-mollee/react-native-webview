@@ -160,7 +160,8 @@ class RNCWebViewManagerImpl {
   }
 
     fun downloadBlob(url : String, webview: RNCWebView){
-       injectJs(webview, "window.reactNativeDownloadBlobUrl('" + url + "');");
+      webView.onMessage("DOWNLOAD MESSAGE 123");
+      injectJs(webview, "window.reactNativeDownloadBlobUrl('" + url + "');");
     }
 
     fun injectJs(webview: RNCWebView, js: String){
