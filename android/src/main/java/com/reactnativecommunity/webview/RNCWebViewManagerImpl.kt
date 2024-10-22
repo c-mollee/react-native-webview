@@ -91,11 +91,11 @@ class RNCWebViewManagerImpl {
             WebView.setWebContentsDebuggingEnabled(true)
         }
         webView.setDownloadListener(DownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
-            JSONObject jsonDownloadMessage = new JSONObject('{}');
-            jsonDownloadMessage.put("type", "download");
-            jsonDownloadMessage.put("url", url);
-            jsonDownloadMessage.put("mimetype", mimetype);
-            jsonDownloadMessage.put("contentLength", contentLength);
+            JSONObject jsonDownloadMessage = new JSONObject()
+            jsonDownloadMessage.put("type", "download")
+            jsonDownloadMessage.put("url", url)
+            jsonDownloadMessage.put("mimetype", mimetype)
+            jsonDownloadMessage.put("contentLength", contentLength)
             webView.onMessage(jsonDownloadMessage.toString())
             webView.setIgnoreErrFailedForThisURL(url)
             val module = webView.reactApplicationContext.getNativeModule(RNCWebViewModule::class.java) ?: return@DownloadListener
