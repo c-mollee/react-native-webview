@@ -91,7 +91,7 @@ class RNCWebViewManagerImpl {
             WebView.setWebContentsDebuggingEnabled(true)
         }
         webView.setDownloadListener(DownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
-            JSONObject jsonDownloadMessage = new JSONObject()
+            val jsonDownloadMessage = JSONObject()
             jsonDownloadMessage.put("type", "download")
             jsonDownloadMessage.put("url", url)
             jsonDownloadMessage.put("mimetype", mimetype)
